@@ -51,7 +51,12 @@ function overall_max_tau = calc_overall_max_tau(max_sigma, min_sigma)
     out_plane_max = max_sigma / 2;
     out_plane_min = min_sigma / 2;
 
-    overall_max_tau = max([in_plane, out_plane_max, out_plane_min]);
+    overall_max_tau = max([abs(in_plane), abs(out_plane_max), abs(out_plane_min)]);
+    if(overall_max_tau == in_plane)
+        disp("In-Plane");
+    else
+        disp("Out-Plane");
+    end
 end
 
 function [max_s, min_s] = calc_abs_max_and_min(sigma_max, sigma_min)
